@@ -28,7 +28,7 @@ export interface ProcessedImage {
   hash: string
 }
 
-/**
+
 
 export async function processListingImage(input: Buffer): Promise<ProcessedImage> {
   if (input.byteLength > MAX_UPLOAD_BYTES) throw new ImageValidationError('too_large')
