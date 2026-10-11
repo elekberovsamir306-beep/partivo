@@ -1,0 +1,53 @@
+# Supabase CLI configuration for local development (`npx supabase start`, requires Docker).
+project_id = "partivo"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = false
+
+[storage]
+enabled = true
+file_size_limit = "10MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/confirm", "https://partivo.az/auth/confirm", "https://www.partivo.az/auth/confirm"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+enable_signup = true
+minimum_password_length = 8
+
+[auth.rate_limit]
+email_sent = 4
+sign_in_sign_ups = 30
+token_verifications = 30
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+secure_password_change = true
+
+# Token-hash templates: links work across devices/browsers (see src/app/auth/confirm/route.ts).
+[auth.email.template.confirmation]
+subject = "Partivo hesabınızı təsdiqləyin"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Partivo şifrənin bərpası"
+content_path = "./supabase/templates/recovery.html"
+
+[auth.sms]
+enable_signup = false
+enable_confirmations = false

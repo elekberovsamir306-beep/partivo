@@ -1,0 +1,254 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Partivo design tokens. Dark ("obsidian") is the signature theme; light is fully supported.
+   Accent text colours are tuned separately from accent fills to keep WCAG AA contrast.
+--------------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+  --bg: #0b0c0e;
+  --bg-elevated: #111317;
+  --surface: #15171c;
+  --surface-2: #1c1f25;
+  --surface-3: #252931;
+  --border: #2a2e36;
+  --border-strong: #3a3f49;
+  --text: #f3f4f6;
+  --text-muted: #a2a8b3;
+  --text-subtle: #7d8490;
+  --silver: #c9ced6;
+  --accent: #ff6b1a;
+  --accent-hover: #ff8540;
+  --accent-ink: #160902;
+  --accent-text: #ff8a4c;
+  --accent-soft: rgb(255 107 26 / 0.12);
+  --success: #3ccf8e;
+  --success-soft: rgb(60 207 142 / 0.12);
+  --warning: #f5b83d;
+  --warning-soft: rgb(245 184 61 / 0.12);
+  --danger: #ff5a5f;
+  --danger-soft: rgb(255 90 95 / 0.12);
+  --vip: #c9a24a;
+  --whatsapp: #25d366;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --shadow-lg: 0 24px 64px -24px rgb(0 0 0 / 0.8);
+  --metal: linear-gradient(135deg, #f5f6f8 0%, #a9afb9 38%, #e6e8ec 58%, #8a919c 100%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+    --bg: #f5f5f3;
+    --bg-elevated: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f0f1f3;
+    --surface-3: #e5e7eb;
+    --border: #e1e3e7;
+    --border-strong: #c9cdd4;
+    --text: #111318;
+    --text-muted: #555b66;
+    --text-subtle: #6b717c;
+    --silver: #5f6672;
+    --accent: #ff6b1a;
+    --accent-hover: #f05a08;
+    --accent-ink: #160902;
+    --accent-text: #b8470a;
+    --accent-soft: rgb(255 107 26 / 0.1);
+    --success: #12865a;
+    --success-soft: rgb(18 134 90 / 0.1);
+    --warning: #9a6400;
+    --warning-soft: rgb(245 184 61 / 0.18);
+    --danger: #cc2b31;
+    --danger-soft: rgb(204 43 49 / 0.08);
+    --vip: #8a6a1f;
+    --whatsapp: #128c4a;
+    --shadow: 0 1px 2px rgb(16 18 24 / 0.06), 0 8px 24px -12px rgb(16 18 24 / 0.18);
+    --shadow-lg: 0 24px 64px -24px rgb(16 18 24 / 0.3);
+    --metal: linear-gradient(135deg, #3b4049 0%, #8c939e 40%, #4a505a 62%, #1d2026 100%);
+  }
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f5f3;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0f1f3;
+  --surface-3: #e5e7eb;
+  --border: #e1e3e7;
+  --border-strong: #c9cdd4;
+  --text: #111318;
+  --text-muted: #555b66;
+  --text-subtle: #6b717c;
+  --silver: #5f6672;
+  --accent: #ff6b1a;
+  --accent-hover: #f05a08;
+  --accent-ink: #160902;
+  --accent-text: #b8470a;
+  --accent-soft: rgb(255 107 26 / 0.1);
+  --success: #12865a;
+  --success-soft: rgb(18 134 90 / 0.1);
+  --warning: #9a6400;
+  --warning-soft: rgb(245 184 61 / 0.18);
+  --danger: #cc2b31;
+  --danger-soft: rgb(204 43 49 / 0.08);
+  --vip: #8a6a1f;
+  --whatsapp: #128c4a;
+  --shadow: 0 1px 2px rgb(16 18 24 / 0.06), 0 8px 24px -12px rgb(16 18 24 / 0.18);
+  --shadow-lg: 0 24px 64px -24px rgb(16 18 24 / 0.3);
+  --metal: linear-gradient(135deg, #3b4049 0%, #8c939e 40%, #4a505a 62%, #1d2026 100%);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-silver: var(--silver);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-vip: var(--vip);
+  --color-whatsapp: var(--whatsapp);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: var(--shadow);
+  --shadow-float: var(--shadow-lg);
+  --radius-card: 1rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  input, select, textarea, button {
+    font: inherit;
+  }
+  dialog::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(4px);
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page { padding-inline: 1.5rem; }
+  }
+  .text-metal {
+    background: var(--metal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+  .field {
+    width: 100%;
+    min-height: 2.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-elevated);
+    color: var(--text);
+    padding: 0.625rem 0.875rem;
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  .field::placeholder { color: var(--text-subtle); }
+  .field:hover { border-color: var(--text-subtle); }
+  .field:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .field[aria-invalid='true'] { border-color: var(--danger); }
+  .field:disabled { opacity: 0.6; cursor: not-allowed; }
+  select.field {
+    appearance: none;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+  }
+  .prose-partivo p { margin-block: 0.75rem; line-height: 1.75; color: var(--text-muted); }
+  .prose-partivo h2 { margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 700; color: var(--text); }
+  .prose-partivo ul { margin-block: 0.75rem; padding-left: 1.25rem; list-style: disc; color: var(--text-muted); }
+  .prose-partivo li { margin-block: 0.35rem; line-height: 1.65; }
+  .grid-noise {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 37%, var(--surface-2) 63%);
+    background-size: 400% 100%;
+    animation: skeleton 1.4s ease infinite;
+  }
+}
+
+@keyframes skeleton {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Theme toggle: show the icon for the theme you would switch to. */
+.theme-icon-moon { display: none; }
+:root[data-theme='light'] .theme-icon-sun { display: none; }
+:root[data-theme='light'] .theme-icon-moon { display: block; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .theme-icon-sun { display: none; }
+  :root:not([data-theme='dark']) .theme-icon-moon { display: block; }
+}
